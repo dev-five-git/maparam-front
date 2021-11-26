@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">마파람</string>
+    <string name="register_string">회원가입</string>
+    <string name="login_string">로그인</string>
+    <string name="find_id_text">아이디</string>
+    <string name="find_pw_text">비밀번호 찾기</string>
+    <string name="service_agree">서비스 이용약관 동의</string>
+    <string name="personal_information_agree">개인정보 처리방침 동의</string>
+    <string name="view_detail_string"><u>보기</u></string>
+    <string name="agree_all">모든 내용을 확인했고 동의합니다.</string>
+    <string name="next_step">다음</string>
+
+</resources>
