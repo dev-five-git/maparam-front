@@ -9,17 +9,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Design.NoActionBar">
-        <activity android:name=".Register_Basic_Activity"></activity>
-        <activity android:name=".AgreeActivity" />
-        <activity android:name=".LoginPageActivity" />
-        <activity android:name=".StartPageActivity">
+        <activity android:name=".Activities.Register_Addition_Activity"
+            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar.Bridge"></activity>
+        <activity
+            android:name=".Activities.Register_Basic_Activity"
+            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar.Bridge" />
+        <activity android:name=".Activities.AgreeActivity" />
+        <activity android:name=".Activities.LoginPageActivity" />
+        <activity android:name=".Activities.StartPageActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
+        <activity android:name=".Activities.MainActivity" />
     </application>
 
 </manifest>

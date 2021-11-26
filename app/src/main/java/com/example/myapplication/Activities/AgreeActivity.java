@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.Toast;
+
+import com.example.myapplication.R;
 
 public class AgreeActivity extends AppCompatActivity {
     CheckBox agree_1;
@@ -39,7 +41,7 @@ public class AgreeActivity extends AppCompatActivity {
     }
     public void weGoingToTheNextLevel(View view){
         if (agree_1.isChecked() && agree_2.isChecked() && agree_3.isChecked()) {
-            Intent intent = new Intent(this,Register_Basic_Activity.class);
+            Intent intent = new Intent(this, Register_Basic_Activity.class);
             startActivity(intent);
             finish();
         }else {
