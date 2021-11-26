@@ -105,6 +105,7 @@
             android:paddingRight="30dp"/>
     </LinearLayout>
     <CheckBox
+        android:id="@+id/agree_all"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:buttonTint="@color/mainColor"
@@ -114,6 +115,7 @@
         android:textColor="@color/default_font_color"
         android:layout_marginTop="25dp"/>
     <Button
+        android:onClick="weGoingToTheNextLevel"
         android:id="@+id/next_step"
         android:text="@string/next_step"
         android:layout_marginTop="25dp"
