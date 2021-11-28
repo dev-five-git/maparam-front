@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/bottomIconHome"
+        android:icon="@drawable/bottom_menu_home"
+        android:title="홈"
+        />
+
+    <item
+        android:id="@+id/bottomIconTimeLine"
+        android:icon="@drawable/bottom_menu_time_line"
+        android:title="타임라인"
+        />
+    <item
+        android:id="@+id/empty_data"
+        android:enabled="false"
+        android:title=""
+        />
+    <item
+        android:id="@+id/bottomIconAlarm"
+        android:icon="@drawable/bottom_menu_alarm"
+        android:title="알림"
+        />
+    <item
+        android:id="@+id/bottomIconGroup"
+        android:icon="@drawable/bottom_menu_group"
+        android:title="커뮤니티"
+        />
+
+</menu>

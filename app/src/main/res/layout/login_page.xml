@@ -136,6 +136,7 @@
 
 
     <Button
+        android:onClick="goMainPage"
         android:text="@string/login_string"
         android:background="@drawable/background_blue_rnd_10"
         android:textColor="@color/white"

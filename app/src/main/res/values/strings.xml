@@ -32,5 +32,7 @@
     <string name="please_enter_content">내용을 입력해주세요</string>
     <string name="agree_policy_string">"마파람"에서는 타인에게 상처를 주는 어떠한 행동도 용납되지 않습니다. 이를 위반 시 계정 이용에 제한이 들어갈 수 있습니다.</string>
     <string name="require_tag_string"></string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
