@@ -12,4 +12,5 @@
     <color name="gray">#707070</color>
     <color name="default_font_color">#3F3F3F</color>
     <color name="bottom_item_not_selected">#3F3F3F</color>
+    <color name="invisible_color">#00000000</color>
 </resources>

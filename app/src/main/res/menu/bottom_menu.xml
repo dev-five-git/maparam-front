@@ -18,14 +18,14 @@
         android:title=""
         />
     <item
-        android:id="@+id/bottomIconClock"
+        android:id="@+id/bottomIconAlarm"
         android:icon="@drawable/bottom_menu_alarm"
-        android:title="주문현황"
+        android:title="알림"
         />
     <item
-        android:id="@+id/bottomIconOrderList"
+        android:id="@+id/bottomIconGroup"
         android:icon="@drawable/bottom_menu_group"
-        android:title="주문내역"
+        android:title="커뮤니티"
         />
 
 </menu>
