@@ -3,6 +3,7 @@ package com.example.myapplication.Activities;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
@@ -83,8 +84,8 @@ public class MainActivity extends AppCompatActivity {
     }
     private void setFrameConstraint(){
         contentFrame = findViewById(R.id.content_fragment_layout);
-        ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) contentFrame.getLayoutParams();
-        params.bottomMargin = bottomNavigationView.getLayoutParams().height;
+        CoordinatorLayout.LayoutParams params = (CoordinatorLayout.LayoutParams) contentFrame.getLayoutParams();
+        params.bottomMargin = 210;
         contentFrame.setLayoutParams(params);
     }
     private BottomNavigationView.OnNavigationItemSelectedListener myOnNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {

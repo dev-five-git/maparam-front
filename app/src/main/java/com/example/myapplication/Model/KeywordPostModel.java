@@ -1,12 +1,27 @@
 package com.example.myapplication.Model;
 
+import java.util.ArrayList;
+
 public class KeywordPostModel {
     private String Name;
     private String age;
     private String date;
     private String post;
+    private String image;
     private int comment_count;
     private int like_count;
+    ArrayList<KeywordPostModel> commentData;
+
+    public KeywordPostModel(String name, String age, String date, String post, String image, int comment_count, int like_count) {
+        Name = name;
+        this.age = age;
+        this.date = date;
+        this.post = post;
+        this.image = image;
+        this.comment_count = comment_count;
+        this.like_count = like_count;
+        this.commentData = new ArrayList<>();
+    }
 
     public String getName() {
         return Name;
@@ -40,6 +55,14 @@ public class KeywordPostModel {
         this.post = post;
     }
 
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
     public int getComment_count() {
         return comment_count;
     }
@@ -56,14 +79,11 @@ public class KeywordPostModel {
         this.like_count = like_count;
     }
 
-    public KeywordPostModel(String name, String age, String date, String post, int comment_count, int like_count) {
-        Name = name;
-        this.age = age;
-        this.date = date;
-        this.post = post;
-        this.comment_count = comment_count;
-        this.like_count = like_count;
+    public ArrayList<KeywordPostModel> getCommentData() {
+        return commentData;
     }
 
-
+    public void setCommentData(ArrayList<KeywordPostModel> commentData) {
+        this.commentData = commentData;
+    }
 }
