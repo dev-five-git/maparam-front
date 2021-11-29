@@ -5,30 +5,31 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:paddingHorizontal="13.5dp">
-    <ImageButton
-        android:id="@+id/menu"
+    <LinearLayout
+        android:id="@+id/menu_shell"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:padding="10dp"
         android:layout_marginTop="22.5dp"
         android:layout_marginRight="16dp"
         android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:background="@drawable/keyword_post_menu"
-        />
-    <View
-        android:layout_marginBottom="11dp"
-        android:layout_alignParentTop="true"
-        android:id="@+id/guideline"
-        android:layout_width="match_parent"
-        android:background="@color/black"
-        android:layout_height="1dp"></View>
+        android:layout_alignParentRight="true">
+        <ImageButton
+            android:id="@+id/menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/keyword_post_menu"
+            />
+
+    </LinearLayout>
+
     <ImageView
         android:id="@+id/profile"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginTop="21dp"
         android:layout_marginLeft="16dp"
-        android:layout_below="@id/guideline"
+        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:src="@drawable/default_profile"
         />
@@ -62,30 +63,18 @@
         android:layout_height="wrap_content"
         android:textColor="@color/gray"
         android:text="2020.12.31"
-        android:layout_alignEnd="@id/menu"
+        android:layout_alignEnd="@id/menu_shell"
         android:layout_alignTop="@id/age"
         android:textSize="12sp"/>
-    <ImageView
-        android:id="@+id/image"
-        android:visibility="visible"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_below="@id/profile"
-        android:layout_marginTop="25dp"
-        android:layout_alignLeft="@id/profile"
-        android:layout_alignRight="@id/menu"
-        android:layout_marginHorizontal="25dp"
-        android:adjustViewBounds="true"
-        android:scaleType="fitXY"
-       />
+
     <LinearLayout
         android:id="@+id/text_shell"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/image"
+        android:layout_below="@id/profile"
         android:layout_marginTop="25dp"
         android:layout_alignLeft="@id/profile"
-        android:layout_alignRight="@id/menu"
+        android:layout_alignRight="@id/menu_shell"
         android:orientation="vertical">
         <TextView
             android:id="@+id/post_text"
@@ -118,68 +107,12 @@
             android:minHeight="50dp"/>
     </LinearLayout>
 
-
-    <LinearLayout
-        android:id="@+id/interaction_bar"
-        android:orientation="horizontal"
-        android:layout_below="@id/text_shell"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="6dp"
-        android:paddingBottom="12dp"
-        android:layout_marginTop="25dp">
-        <LinearLayout
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content">
-            <ImageView
-                android:layout_gravity="center_vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:src="@drawable/comment_icon"
-                android:padding="10dp"
-                android:layout_marginLeft="16dp"/>
-
-            <TextView
-                android:id="@+id/comment_count"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="11dp"
-                android:fontFamily="@font/bm_jua"
-                android:text="10"
-                android:paddingVertical="10dp"
-                android:textColor="@color/gray" />
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/like_icon"
-                android:padding="10dp"
-                android:layout_marginLeft="5dp"/>
-            <TextView
-                android:id="@+id/like_count"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="5"
-                android:paddingVertical="10dp"
-                android:textColor="@color/gray"
-                android:fontFamily="@font/bm_jua"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="11dp"/>
-        </LinearLayout>
-    </LinearLayout>
     <EditText
         android:visibility="gone"
         android:id="@+id/comment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/interaction_bar"
+        android:layout_below="@id/text_shell"
         android:fontFamily="@font/bm_jua"
         android:textSize="15sp"
         android:paddingHorizontal="10dp"
@@ -188,6 +121,15 @@
         android:hint="@string/please_enter_content"
         android:textColorHint="@color/default_font_color"
         android:background="@drawable/memo_border_blank"/>
+
+    <View
+        android:layout_below="@id/comment"
+        android:layout_marginTop="11dp"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/guideline"
+        android:layout_width="match_parent"
+        android:background="@color/black"
+        android:layout_height="1dp"></View>
 
 
 

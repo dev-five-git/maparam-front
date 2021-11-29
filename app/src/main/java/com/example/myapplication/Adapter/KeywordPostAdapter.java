@@ -11,29 +11,39 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.example.myapplication.Dialog.HomePostMenuDialog;
 import com.example.myapplication.Model.KeywordPostModel;
 import com.example.myapplication.R;
 
 import java.util.ArrayList;
 
-public class KeywordPostAdapter extends RecyclerView.Adapter<KeywordPostAdapter.KeywordViewHolder> {
+public class KeywordPostAdapter extends RecyclerView.Adapter<KeywordPostAdapter.KeywordPostViewHolder> implements HomePostMenuDialog.ClickButton {
     ArrayList<KeywordPostModel> posts;
-
-    public KeywordPostAdapter(ArrayList<KeywordPostModel> kewords) {
+    Context context;
+    ClickButton clickButton;
+    Boolean commentShow = false;
+    public interface ClickButton {
+        void clickComment();
+    }
+    public KeywordPostAdapter(ArrayList<KeywordPostModel> kewords,Context context,ClickButton clickButton) {
         this.posts = kewords;
+        this.context = context;
+        this.commentShow = false;
+        this.clickButton = clickButton;
     }
 
     @NonNull
     @Override
-    public KeywordViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public KeywordPostViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         Context context = parent.getContext();
         View view = LayoutInflater.from(context).inflate(R.layout.keyword_post, parent, false);
-        KeywordViewHolder couponViewHolder = new KeywordViewHolder(view);
+        KeywordPostViewHolder couponViewHolder = new KeywordPostViewHolder(view);
         return couponViewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull KeywordViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull KeywordPostViewHolder holder, int position) {
         KeywordPostModel post = posts.get(position);
         holder.user_name.setText(post.getName());
         holder.age.setText(post.getAge());
@@ -42,19 +52,58 @@ public class KeywordPostAdapter extends RecyclerView.Adapter<KeywordPostAdapter.
         holder.post_edit.setText(post.getPost());
         holder.comment_count.setText(""+post.getComment_count());
         holder.like_count.setText(""+post.getLike_count());
+        menuBuilding(holder,position);
+        commentBuilding(holder,position);
+        if (post.getImage().length() >0){
+            holder.imageView.setVisibility(View.VISIBLE);
+            Glide.with(context).load(post.getImage()).into(holder.imageView);
+        }else{
+            holder.imageView.setVisibility(View.GONE);
+        }
+    }
+    public void commentBuilding(KeywordPostViewHolder holder, int position) {
+        holder.comment_count.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                if (!commentShow) {
+//                    holder.comment.setVisibility(View.VISIBLE);
+//                }else {
+//                    holder.comment.setVisibility(View.GONE);
+//                }
+//                commentShow = !commentShow;
+                clickButton.clickComment();
+
+            }
+        });
+    }
+    public void menuBuilding(KeywordPostViewHolder holder, int position){
         holder.menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (holder.post_text.getVisibility() == View.VISIBLE) {
-                    holder.post_text.setVisibility(View.INVISIBLE);
-                    holder.post_edit.setVisibility(View.VISIBLE);
-                }else{
-                    holder.post_text.setVisibility(View.VISIBLE);
-                    holder.post_edit.setVisibility(View.INVISIBLE);
-                }
+                HomePostMenuDialog dialog = new HomePostMenuDialog(context, holder, new HomePostMenuDialog.ClickButton() {
+                    @Override
+                    public void clickEdit(KeywordPostViewHolder holder) {
+                        if (holder.post_text.getVisibility() == View.VISIBLE) {
+                            holder.post_text.setVisibility(View.GONE);
+                            holder.post_edit.setVisibility(View.VISIBLE);
+                            holder.post_edit.setText(holder.post_text.getText().toString());
+                        }else{
+                            holder.post_text.setVisibility(View.VISIBLE);
+                            holder.post_edit.setVisibility(View.GONE);
+                            holder.post_text.setText(holder.post_edit.getText().toString());
+                        }
+                    }
+
+                    @Override
+                    public void clickDel(KeywordPostViewHolder holder) {
+                        posts.remove(position);
+                        notifyDataSetChanged();
+                    }
+                });
+                dialog.callFunction();
+
             }
         });
-
     }
     @Override
     public int getItemViewType(int position) {
@@ -70,24 +119,24 @@ public class KeywordPostAdapter extends RecyclerView.Adapter<KeywordPostAdapter.
     }
 
     @Override
-    public boolean onFailedToRecycleView(@NonNull KeywordPostAdapter.KeywordViewHolder holder) {
+    public boolean onFailedToRecycleView(@NonNull KeywordPostAdapter.KeywordPostViewHolder holder) {
         return super.onFailedToRecycleView(holder);
     }
 
     @Override
-    public void onViewAttachedToWindow(@NonNull KeywordPostAdapter.KeywordViewHolder holder) {
+    public void onViewAttachedToWindow(@NonNull KeywordPostAdapter.KeywordPostViewHolder holder) {
         super.onViewAttachedToWindow(holder);
     }
 
     @Override
-    public void onViewRecycled(@NonNull KeywordPostAdapter.KeywordViewHolder holder) {
+    public void onViewRecycled(@NonNull KeywordPostAdapter.KeywordPostViewHolder holder) {
         super.onViewRecycled(holder);
     }
 
 
 
     @Override
-    public void onViewDetachedFromWindow(@NonNull KeywordPostAdapter.KeywordViewHolder holder) {
+    public void onViewDetachedFromWindow(@NonNull KeywordPostAdapter.KeywordPostViewHolder holder) {
         super.onViewDetachedFromWindow(holder);
     }
 
@@ -96,9 +145,26 @@ public class KeywordPostAdapter extends RecyclerView.Adapter<KeywordPostAdapter.
         super.onAttachedToRecyclerView(recyclerView);
     }
 
+    @Override
+    public void clickEdit(KeywordPostViewHolder holder) {
+        if (holder.post_text.getVisibility() == View.VISIBLE) {
+            holder.post_text.setVisibility(View.GONE);
+            holder.post_edit.setVisibility(View.VISIBLE);
+            holder.post_edit.setText(holder.post_text.getText().toString());
+        }else{
+            holder.post_text.setVisibility(View.VISIBLE);
+            holder.post_edit.setVisibility(View.GONE);
+            holder.post_text.setText(holder.post_edit.getText().toString());
+        }
+    }
+
+    @Override
+    public void clickDel(KeywordPostViewHolder holder) {
+
+    }
 
 
-    public class KeywordViewHolder extends RecyclerView.ViewHolder{
+    public class KeywordPostViewHolder extends RecyclerView.ViewHolder{
         ImageView menu;
         ImageView profile;
         TextView user_name;
@@ -110,7 +176,7 @@ public class KeywordPostAdapter extends RecyclerView.Adapter<KeywordPostAdapter.
         TextView like_count;
         ImageView imageView;
 
-        public KeywordViewHolder(@NonNull View itemView) {
+        public KeywordPostViewHolder(@NonNull View itemView) {
             super(itemView);
             menu = itemView.findViewById(R.id.menu);
             profile = itemView.findViewById(R.id.profile);
@@ -122,6 +188,8 @@ public class KeywordPostAdapter extends RecyclerView.Adapter<KeywordPostAdapter.
             comment_count = itemView.findViewById(R.id.comment_count);
             like_count = itemView.findViewById(R.id.like_count);
             imageView = itemView.findViewById(R.id.image);
+
         }
     }
+
 }
