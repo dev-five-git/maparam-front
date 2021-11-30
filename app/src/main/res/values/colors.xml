@@ -14,4 +14,5 @@
     <color name="bottom_item_not_selected">#3F3F3F</color>
     <color name="invisible_color">#00000000</color>
     <color name="editText_gray">#E1E1E1</color>
+    <color name="alarm_background_gray">#E1E1E1</color>
 </resources>

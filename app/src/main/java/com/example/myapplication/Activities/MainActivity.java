@@ -102,11 +102,11 @@ public class MainActivity extends AppCompatActivity {
                     return true;
                 case R.id.bottomIconAlarm:
 //                    getSupportFragmentManager().beginTransaction().replace(R.id.content_fragment_layout,alarmFragment).commit();
-                    container.setCurrentItem(3);
+                    container.setCurrentItem(2);
                     return true;
                 case R.id.bottomIconGroup:
 //                    getSupportFragmentManager().beginTransaction().replace(R.id.content_fragment_layout,communityFragment).commit();
-                    container.setCurrentItem(4);
+                    container.setCurrentItem(3);
                     return true;
             }
             return false;

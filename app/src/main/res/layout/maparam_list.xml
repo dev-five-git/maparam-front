@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/background_community_rnd"
+    android:padding="20dp"
+    android:layout_marginBottom="22dp"
+    android:orientation="vertical">
+    <TextView
+        android:id="@+id/group_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="17sp"
+        android:textColor="@color/default_font_color"
+        android:text="독서를 좋아하는 사람들의 모임 (독좋사)"
+        android:fontFamily="@font/bm_jua"/>
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="인원수 15/50, 파람장: 김혜련, 생성일자: 2021/07/20"
+        android:textColor="@color/gray"
+        android:textSize="10sp"
+        android:fontFamily="@font/jalnan"/>
+
+</LinearLayout>

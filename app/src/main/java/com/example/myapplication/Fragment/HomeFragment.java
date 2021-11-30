@@ -30,6 +30,8 @@ import java.util.ArrayList;
  * create an instance of this fragment.
  */
 public class HomeFragment extends Fragment {
+    private static String TAG = "HomeFragment";
+
     private View view;
     private Context context;
     ArrayList<KeywordPostModel> posts = new ArrayList<>();
@@ -58,6 +60,7 @@ public class HomeFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        Log.e(TAG,"D");
         if(!init){
             posts.add(0,new KeywordPostModel("ddd","zz","ddf","ddddddddddddddddd",
                     "https://maparam.s3.ap-northeast-2.amazonaws.com/6ce1e5f4-5d01-4bae-a3ba-e29b66a91060.png",0,0));
@@ -68,7 +71,6 @@ public class HomeFragment extends Fragment {
         }
 
     }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

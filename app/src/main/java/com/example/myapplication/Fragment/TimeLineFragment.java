@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.myapplication.Activities.HomeCommentDetailActivity;
+import com.example.myapplication.Activities.TimeLineMapActivity;
 import com.example.myapplication.Adapter.TimeLinePostAdapter;
 import com.example.myapplication.Model.TimeLinePostModel;
 import com.example.myapplication.R;
@@ -28,7 +30,7 @@ import java.util.ArrayList;
  * create an instance of this fragment.
  */
 public class TimeLineFragment extends Fragment {
-
+    private static String TAG = "TimeLineFragment";
     ImageView map_icon;
     TextView tagList;
     TextView moreText;
@@ -55,7 +57,10 @@ public class TimeLineFragment extends Fragment {
 
         }
     }
-
+    public void onResume() {
+        super.onResume();
+        Log.e(TAG,"D");
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -66,7 +71,7 @@ public class TimeLineFragment extends Fragment {
         timeLinePostRecycler = view.findViewById(R.id.TimeLinePostRecycler);
         addPostBtn = view.findViewById(R.id.addPostBtn);
         makingAdapter();
-
+        clickMapBuilding();
         return view;
     }
 
@@ -88,5 +93,14 @@ public class TimeLineFragment extends Fragment {
         });
         timeLinePostRecycler.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
         timeLinePostRecycler.setAdapter(adapter);
+    }
+    public void clickMapBuilding(){
+        map_icon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, TimeLineMapActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }
