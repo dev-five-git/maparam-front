@@ -40,11 +40,12 @@ public class TimeLineFragment extends Fragment {
     private ArrayList<TimeLinePostModel> timeLinePostModels;
     private View view;
     private Context context;
-    public TimeLineFragment(Context context) {
-        this.context = context;
+    public TimeLineFragment() {
+
     }
-    public static TimeLineFragment newInstance(String param1, String parma2,Context context) {
-        TimeLineFragment fragment = new TimeLineFragment(context);
+    public static TimeLineFragment newInstance(Context context) {
+        TimeLineFragment fragment = new TimeLineFragment();
+        fragment.context = context;
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;

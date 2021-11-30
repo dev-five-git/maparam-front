@@ -16,9 +16,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Design.NoActionBar">
-        <activity android:name=".Activities.MaparamGroupActivity"></activity>
+        <activity android:name=".Activities.MaparamGroupCommentActivity"></activity>
+        <activity android:name=".Activities.BlankActivity" />
+        <activity android:name=".Activities.MaparamGroupNoticeActivity" />
+        <activity android:name=".Activities.MaparamNotGroupMemberActivity" />
+        <activity android:name=".Activities.MaparamGroupMemberActivity" />
+        <activity android:name=".Activities.MaparamGroupHeaderActivity" />
         <activity android:name=".Activities.FindMaparamActivity" />
         <activity android:name=".Activities.TimeLineMapActivity" />
+        <activity android:name=".Activities.MaparamGroupTimeLineActivity" />
 
         <meta-data
             android:name="com.naver.maps.map.CLIENT_ID"

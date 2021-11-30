@@ -25,7 +25,7 @@
     <item
         android:id="@+id/bottomIconGroup"
         android:icon="@drawable/bottom_menu_group"
-        android:title="커뮤니티"
+        android:title="프로필"
         />
 
 </menu>

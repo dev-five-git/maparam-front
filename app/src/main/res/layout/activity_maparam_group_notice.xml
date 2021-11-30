@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    tools:context=".Activities.MaparamGroupNoticeActivity"
+    >
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:id="@+id/topLevel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="13dp"
+            android:layout_marginTop="53dp"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:background="@color/alarm_background_gray"
+                android:elevation="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/group_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="독서를 좋아하는 사람들의 모임 (독좋사)"
+                    android:textColor="@color/default_font_color"
+                    android:fontFamily="@font/bm_jua"
+                    android:textSize="17sp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginTop="20dp"/>
+                <TextView
+                    android:id="@+id/description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="인원수 15/50, 파람장: 김혜련, 생성일자: 2021/07/20"
+                    android:textColor="@color/gray"
+                    android:textSize="10sp"
+                    android:fontFamily="@font/bm_jua"
+                    android:layout_below="@id/group_name"
+                    android:layout_alignLeft="@id/group_name"
+                    android:layout_alignRight="@id/group_name"
+                    android:layout_marginTop="5dp"/>
+                <TextView
+                    android:id="@+id/created_day"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="생성일자: 2021/07/20"
+                    android:textColor="@color/gray"
+                    android:textSize="10sp"
+                    android:layout_alignLeft="@id/description"
+                    android:layout_toLeftOf="@id/goBack"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_below="@id/description"/>
+                <Button
+                    android:onClick="goBack"
+                    android:id="@+id/goBack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/goBack"
+                    android:background="@drawable/background_blue_rnd_10"
+                    android:textSize="10sp"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/jalnan"
+                    android:minHeight="0dp"
+                    android:minWidth="0dp"
+                    android:paddingVertical="7dp"
+                    android:paddingHorizontal="10dp"
+                    android:layout_marginRight="9dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_alignTop="@id/created_day"
+                    android:layout_alignParentRight="true"/>
+            </RelativeLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/NoticePostRecycler"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/guideline"
+                android:layout_alignParentBottom="true"/>
+
+        </LinearLayout>
+    </ScrollView>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/addPostBtn"
+        android:visibility="gone"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:backgroundTint="@color/mainColor"
+        android:src="@drawable/plus_white"
+        android:adjustViewBounds="true"
+        android:layout_marginRight="19dp"
+        android:layout_marginBottom="19dp"/>
+
+
+</RelativeLayout>

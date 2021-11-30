@@ -31,7 +31,6 @@ import java.util.ArrayList;
  */
 public class CommunityFragment extends Fragment {
     private static String TAG = "CommunityFragment";
-
     RecyclerView maparamGroupRecycler;
     Button makeGroupBtn;
     ImageButton searchBtn;
@@ -39,11 +38,12 @@ public class CommunityFragment extends Fragment {
     MaparamAdapter adapter;
    private View view;
    private Context context;
-    public CommunityFragment(Context context) {
-        this.context = context;
+    public CommunityFragment() {
+
     }
-    public static CommunityFragment newInstance(String param1, String param2,Context context) {
-        CommunityFragment fragment = new CommunityFragment(context);
+    public static CommunityFragment newInstance(Context context) {
+        CommunityFragment fragment = new CommunityFragment();
+        fragment.context = context;
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;

@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,22 +14,22 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.myapplication.Dialog.HomePostMenuDialog;
-import com.example.myapplication.Dialog.TimeLinePostMenuDialog;
+import com.example.myapplication.Dialog.MaparamPostMenuDialog;
 import com.example.myapplication.Model.KeywordPostModel;
-import com.example.myapplication.Model.TimeLinePostModel;
+import com.example.myapplication.Model.MaparamGroupPostModel;
 import com.example.myapplication.R;
 
 import java.util.ArrayList;
 
-public class TimeLinePostAdapter extends RecyclerView.Adapter<TimeLinePostAdapter.TimeLinePostViewHolder> {
-    ArrayList<TimeLinePostModel> posts;
+public class MaparamGroupPostAdapter extends RecyclerView.Adapter<MaparamGroupPostAdapter.MaparamGroupPostViewHolder> implements MaparamPostMenuDialog.ClickButton {
+    ArrayList<MaparamGroupPostModel> posts;
     Context context;
     ClickButton clickButton;
     Boolean commentShow = false;
     public interface ClickButton {
         void clickComment();
     }
-    public TimeLinePostAdapter(ArrayList<TimeLinePostModel> kewords, Context context, ClickButton clickButton) {
+    public MaparamGroupPostAdapter(ArrayList<MaparamGroupPostModel> kewords,Context context,ClickButton clickButton) {
         this.posts = kewords;
         this.context = context;
         this.commentShow = false;
@@ -37,16 +38,16 @@ public class TimeLinePostAdapter extends RecyclerView.Adapter<TimeLinePostAdapte
 
     @NonNull
     @Override
-    public TimeLinePostViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public MaparamGroupPostViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         Context context = parent.getContext();
-        View view = LayoutInflater.from(context).inflate(R.layout.time_line_post, parent, false);
-        TimeLinePostViewHolder viewHolder = new TimeLinePostViewHolder(view);
+        View view = LayoutInflater.from(context).inflate(R.layout.keyword_post, parent, false);
+        MaparamGroupPostViewHolder viewHolder = new MaparamGroupPostViewHolder(view);
         return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull TimeLinePostViewHolder holder, int position) {
-        TimeLinePostModel post = posts.get(position);
+    public void onBindViewHolder(@NonNull MaparamGroupPostViewHolder holder, int position) {
+        MaparamGroupPostModel post = posts.get(position);
         holder.user_name.setText(post.getName());
         holder.age.setText(post.getAge());
         holder.date.setText(post.getDate());
@@ -63,7 +64,7 @@ public class TimeLinePostAdapter extends RecyclerView.Adapter<TimeLinePostAdapte
             holder.imageView.setVisibility(View.GONE);
         }
     }
-    public void commentBuilding(TimeLinePostViewHolder holder, int position) {
+    public void commentBuilding(MaparamGroupPostViewHolder holder, int position) {
         holder.comment_count.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -78,13 +79,13 @@ public class TimeLinePostAdapter extends RecyclerView.Adapter<TimeLinePostAdapte
             }
         });
     }
-    public void menuBuilding(TimeLinePostViewHolder holder, int position){
-        holder.menu.setOnClickListener(new View.OnClickListener() {
+    public void menuBuilding(MaparamGroupPostViewHolder holder, int position){
+        holder.menu_shell.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                TimeLinePostMenuDialog dialog = new TimeLinePostMenuDialog(context, holder, new TimeLinePostMenuDialog.ClickButton() {
+                MaparamPostMenuDialog dialog = new MaparamPostMenuDialog(context, holder, new MaparamPostMenuDialog.ClickButton() {
                     @Override
-                    public void clickEdit(TimeLinePostViewHolder holder) {
+                    public void clickEdit(MaparamGroupPostViewHolder holder) {
                         if (holder.post_text.getVisibility() == View.VISIBLE) {
                             holder.post_text.setVisibility(View.GONE);
                             holder.post_edit.setVisibility(View.VISIBLE);
@@ -97,7 +98,7 @@ public class TimeLinePostAdapter extends RecyclerView.Adapter<TimeLinePostAdapte
                     }
 
                     @Override
-                    public void clickDel(TimeLinePostViewHolder holder) {
+                    public void clickDel(MaparamGroupPostViewHolder holder) {
                         posts.remove(position);
                         notifyDataSetChanged();
                     }
@@ -121,24 +122,24 @@ public class TimeLinePostAdapter extends RecyclerView.Adapter<TimeLinePostAdapte
     }
 
     @Override
-    public boolean onFailedToRecycleView(@NonNull TimeLinePostViewHolder holder) {
+    public boolean onFailedToRecycleView(@NonNull MaparamGroupPostAdapter.MaparamGroupPostViewHolder holder) {
         return super.onFailedToRecycleView(holder);
     }
 
     @Override
-    public void onViewAttachedToWindow(@NonNull TimeLinePostViewHolder holder) {
+    public void onViewAttachedToWindow(@NonNull MaparamGroupPostAdapter.MaparamGroupPostViewHolder holder) {
         super.onViewAttachedToWindow(holder);
     }
 
     @Override
-    public void onViewRecycled(@NonNull TimeLinePostViewHolder holder) {
+    public void onViewRecycled(@NonNull MaparamGroupPostAdapter.MaparamGroupPostViewHolder holder) {
         super.onViewRecycled(holder);
     }
 
 
 
     @Override
-    public void onViewDetachedFromWindow(@NonNull TimeLinePostViewHolder holder) {
+    public void onViewDetachedFromWindow(@NonNull MaparamGroupPostAdapter.MaparamGroupPostViewHolder holder) {
         super.onViewDetachedFromWindow(holder);
     }
 
@@ -147,26 +148,26 @@ public class TimeLinePostAdapter extends RecyclerView.Adapter<TimeLinePostAdapte
         super.onAttachedToRecyclerView(recyclerView);
     }
 
-//    @Override
-//    public void clickEdit(TimeLinePostViewHolder holder) {
-//        if (holder.post_text.getVisibility() == View.VISIBLE) {
-//            holder.post_text.setVisibility(View.GONE);
-//            holder.post_edit.setVisibility(View.VISIBLE);
-//            holder.post_edit.setText(holder.post_text.getText().toString());
-//        }else{
-//            holder.post_text.setVisibility(View.VISIBLE);
-//            holder.post_edit.setVisibility(View.GONE);
-//            holder.post_text.setText(holder.post_edit.getText().toString());
-//        }
-//    }
-//
-//    @Override
-//    public void clickDel(TimeLinePostViewHolder holder) {
-//
-//    }
+    @Override
+    public void clickEdit(MaparamGroupPostViewHolder holder) {
+        if (holder.post_text.getVisibility() == View.VISIBLE) {
+            holder.post_text.setVisibility(View.GONE);
+            holder.post_edit.setVisibility(View.VISIBLE);
+            holder.post_edit.setText(holder.post_text.getText().toString());
+        }else{
+            holder.post_text.setVisibility(View.VISIBLE);
+            holder.post_edit.setVisibility(View.GONE);
+            holder.post_text.setText(holder.post_edit.getText().toString());
+        }
+    }
+
+    @Override
+    public void clickDel(MaparamGroupPostViewHolder holder) {
+
+    }
 
 
-    public class TimeLinePostViewHolder extends RecyclerView.ViewHolder{
+    public class MaparamGroupPostViewHolder extends RecyclerView.ViewHolder{
         ImageView menu;
         ImageView profile;
         TextView user_name;
@@ -176,10 +177,10 @@ public class TimeLinePostAdapter extends RecyclerView.Adapter<TimeLinePostAdapte
         EditText post_edit;
         TextView comment_count;
         TextView like_count;
-        TextView tag_list_text;
         ImageView imageView;
+        LinearLayout menu_shell;
 
-        public TimeLinePostViewHolder(@NonNull View itemView) {
+        public MaparamGroupPostViewHolder(@NonNull View itemView) {
             super(itemView);
             menu = itemView.findViewById(R.id.menu);
             profile = itemView.findViewById(R.id.profile);
@@ -191,7 +192,7 @@ public class TimeLinePostAdapter extends RecyclerView.Adapter<TimeLinePostAdapte
             comment_count = itemView.findViewById(R.id.comment_count);
             like_count = itemView.findViewById(R.id.like_count);
             imageView = itemView.findViewById(R.id.image);
-            tag_list_text = itemView.findViewById(R.id.tag_list_text);
+            menu_shell = itemView.findViewById(R.id.menu_shell);
 
         }
     }

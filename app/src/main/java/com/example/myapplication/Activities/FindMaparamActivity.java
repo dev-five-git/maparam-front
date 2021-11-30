@@ -30,7 +30,7 @@ public class FindMaparamActivity extends AppCompatActivity {
             MaparamModel maparam = new MaparamModel("ㅇㄹ"+i,"강형민"+i,"werqwerqwer",i,i);
             maparams.add(maparam);
         }
-        adapter = new MaparamAdapter(maparams,this);
+        adapter = new MaparamAdapter(maparams,getApplicationContext());
         maparamGroupRecycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         maparamGroupRecycler.setAdapter(adapter);
     }

@@ -40,11 +40,11 @@ public class HomeFragment extends Fragment {
     FloatingActionButton addPostBtn;
     KeywordPostAdapter adapter;
     Boolean init = true;
-    public HomeFragment(Context context) {
-        this.context = context;
+    public HomeFragment() {
     }
-    public static HomeFragment newInstance(String param1, String param2,Context context) {
-        HomeFragment fragment = new HomeFragment(context);
+    public static HomeFragment newInstance(Context context) {
+        HomeFragment fragment = new HomeFragment();
+        fragment.context = context;
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -93,7 +93,9 @@ public class HomeFragment extends Fragment {
     public void makingAdapter(){
         posts = new ArrayList<>();
         for (int i = 0 ; i<15;i++) {
-            KeywordPostModel post = new KeywordPostModel(i+"",i+"",i+"",i+"","https://maparam.s3.ap-northeast-2.amazonaws.com/6ce1e5f4-5d01-4bae-a3ba-e29b66a91060.png",i,i);
+//            KeywordPostModel post = new KeywordPostModel(i+"",i+"",i+"",i+"","https://maparam.s3.ap-northeast-2.amazonaws.com/6ce1e5f4-5d01-4bae-a3ba-e29b66a91060.png",i,i);
+            KeywordPostModel post = new KeywordPostModel(i+"",i+"",i+"",i+"",
+                    "",i,i);
             posts.add(post);
         }
         adapter = new KeywordPostAdapter(posts, context, new KeywordPostAdapter.ClickButton() {

@@ -39,8 +39,8 @@ public class KeywordPostAdapter extends RecyclerView.Adapter<KeywordPostAdapter.
     public KeywordPostViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         Context context = parent.getContext();
         View view = LayoutInflater.from(context).inflate(R.layout.keyword_post, parent, false);
-        KeywordPostViewHolder couponViewHolder = new KeywordPostViewHolder(view);
-        return couponViewHolder;
+        KeywordPostViewHolder viewHolder = new KeywordPostViewHolder(view);
+        return viewHolder;
     }
 
     @Override

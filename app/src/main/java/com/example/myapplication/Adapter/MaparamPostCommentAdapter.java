@@ -13,31 +13,33 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.Dialog.HomePostCommentMenuDialog;
+import com.example.myapplication.Dialog.MaparamGroupCommentMenuDialog;
 import com.example.myapplication.Model.KeywordPostCommentModel;
+import com.example.myapplication.Model.MaparamGroupPostCommentModel;
 import com.example.myapplication.R;
 
 import java.util.ArrayList;
 
-public class KeywordPostCommentAdapter extends RecyclerView.Adapter<KeywordPostCommentAdapter.KeywordPostCommentViewHolder> {
-    ArrayList<KeywordPostCommentModel> comments;
+public class MaparamPostCommentAdapter extends RecyclerView.Adapter<MaparamPostCommentAdapter.MaparamPostCommentViewHolder> {
+    ArrayList<MaparamGroupPostCommentModel> comments;
     Context context;
-    public KeywordPostCommentAdapter(ArrayList<KeywordPostCommentModel> comments, Context context) {
+    public MaparamPostCommentAdapter(ArrayList<MaparamGroupPostCommentModel> comments, Context context) {
         this.comments = comments;
         this.context = context;
     }
 
     @NonNull
     @Override
-    public KeywordPostCommentViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public MaparamPostCommentViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         Context context = parent.getContext();
         View view = LayoutInflater.from(context).inflate(R.layout.keyword_post_comment, parent, false);
-        KeywordPostCommentViewHolder viewHolder = new KeywordPostCommentViewHolder(view);
+        MaparamPostCommentViewHolder viewHolder = new MaparamPostCommentViewHolder(view);
         return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull KeywordPostCommentViewHolder holder, int position) {
-        KeywordPostCommentModel post = comments.get(position);
+    public void onBindViewHolder(@NonNull MaparamPostCommentViewHolder holder, int position) {
+        MaparamGroupPostCommentModel post = comments.get(position);
         holder.user_name.setText(post.getName());
         holder.date.setText(post.getDate());
         holder.post_text.setText(post.getPost());
@@ -45,14 +47,14 @@ public class KeywordPostCommentAdapter extends RecyclerView.Adapter<KeywordPostC
         menuBuilding(holder,position);
 
     }
-    public void menuBuilding(KeywordPostCommentViewHolder holder, int position){
+    public void menuBuilding(MaparamPostCommentViewHolder holder, int position){
         holder.menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                HomePostCommentMenuDialog dialog = new HomePostCommentMenuDialog(context, holder, new HomePostCommentMenuDialog.ClickButton() {
+                MaparamGroupCommentMenuDialog dialog = new MaparamGroupCommentMenuDialog(context, holder, new MaparamGroupCommentMenuDialog.ClickButton() {
 
 
-                    public void clickEdit(KeywordPostCommentAdapter.KeywordPostCommentViewHolder holder) {
+                    public void clickEdit(MaparamPostCommentViewHolder holder) {
                         if (holder.post_text.getVisibility() == View.VISIBLE) {
                             holder.post_text.setVisibility(View.GONE);
                             holder.post_edit.setVisibility(View.VISIBLE);
@@ -65,7 +67,7 @@ public class KeywordPostCommentAdapter extends RecyclerView.Adapter<KeywordPostC
                     }
 
                     @Override
-                    public void clickDel(KeywordPostCommentAdapter.KeywordPostCommentViewHolder holder) {
+                    public void clickDel(MaparamPostCommentViewHolder holder) {
                         comments.remove(position);
                         notifyDataSetChanged();
                     }
@@ -77,10 +79,10 @@ public class KeywordPostCommentAdapter extends RecyclerView.Adapter<KeywordPostC
         holder.shell.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                HomePostCommentMenuDialog dialog = new HomePostCommentMenuDialog(context, holder, new HomePostCommentMenuDialog.ClickButton() {
+                MaparamGroupCommentMenuDialog dialog = new MaparamGroupCommentMenuDialog(context, holder,  new MaparamGroupCommentMenuDialog.ClickButton() {
 
 
-                    public void clickEdit(KeywordPostCommentAdapter.KeywordPostCommentViewHolder holder) {
+                    public void clickEdit(MaparamPostCommentViewHolder holder) {
                         if (holder.post_text.getVisibility() == View.VISIBLE) {
                             holder.post_text.setVisibility(View.GONE);
                             holder.post_edit.setVisibility(View.VISIBLE);
@@ -93,7 +95,7 @@ public class KeywordPostCommentAdapter extends RecyclerView.Adapter<KeywordPostC
                     }
 
                     @Override
-                    public void clickDel(KeywordPostCommentAdapter.KeywordPostCommentViewHolder holder) {
+                    public void clickDel(MaparamPostCommentViewHolder holder) {
                         comments.remove(position);
                         notifyDataSetChanged();
                     }
@@ -117,24 +119,24 @@ public class KeywordPostCommentAdapter extends RecyclerView.Adapter<KeywordPostC
     }
 
     @Override
-    public boolean onFailedToRecycleView(@NonNull KeywordPostCommentAdapter.KeywordPostCommentViewHolder holder) {
+    public boolean onFailedToRecycleView(@NonNull MaparamPostCommentViewHolder holder) {
         return super.onFailedToRecycleView(holder);
     }
 
     @Override
-    public void onViewAttachedToWindow(@NonNull KeywordPostCommentAdapter.KeywordPostCommentViewHolder holder) {
+    public void onViewAttachedToWindow(@NonNull MaparamPostCommentViewHolder holder) {
         super.onViewAttachedToWindow(holder);
     }
 
     @Override
-    public void onViewRecycled(@NonNull KeywordPostCommentAdapter.KeywordPostCommentViewHolder holder) {
+    public void onViewRecycled(@NonNull MaparamPostCommentViewHolder holder) {
         super.onViewRecycled(holder);
     }
 
 
 
     @Override
-    public void onViewDetachedFromWindow(@NonNull KeywordPostCommentAdapter.KeywordPostCommentViewHolder holder) {
+    public void onViewDetachedFromWindow(@NonNull MaparamPostCommentViewHolder holder) {
         super.onViewDetachedFromWindow(holder);
     }
 
@@ -143,7 +145,7 @@ public class KeywordPostCommentAdapter extends RecyclerView.Adapter<KeywordPostC
         super.onAttachedToRecyclerView(recyclerView);
     }
 
-    public class KeywordPostCommentViewHolder extends RecyclerView.ViewHolder{
+    public class MaparamPostCommentViewHolder extends RecyclerView.ViewHolder{
         ImageView menu;
         ImageView profile;
         TextView user_name;
@@ -152,7 +154,7 @@ public class KeywordPostCommentAdapter extends RecyclerView.Adapter<KeywordPostC
         EditText post_edit;
         LinearLayout shell;
 
-        public KeywordPostCommentViewHolder(@NonNull View itemView) {
+        public MaparamPostCommentViewHolder(@NonNull View itemView) {
             super(itemView);
             menu = itemView.findViewById(R.id.menu);
             profile = itemView.findViewById(R.id.profile);

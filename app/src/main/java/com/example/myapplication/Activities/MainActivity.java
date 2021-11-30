@@ -6,20 +6,25 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.res.ColorStateList;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.FrameLayout;
 
 import com.example.myapplication.Adapter.MainPageViewPagerAdapter;
 import com.example.myapplication.Fragment.AlarmFragment;
 import com.example.myapplication.Fragment.CommunityFragment;
 import com.example.myapplication.Fragment.HomeFragment;
+import com.example.myapplication.Fragment.ProfileFragment;
 import com.example.myapplication.Fragment.TimeLineFragment;
 import com.example.myapplication.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
@@ -31,8 +36,10 @@ public class MainActivity extends AppCompatActivity {
     TimeLineFragment timelineFragment;
     AlarmFragment alarmFragment;
     CommunityFragment communityFragment;
+    ProfileFragment profileFragment;
+    FloatingActionButton fab;
     public ArrayList<Fragment> fragments;
-
+    FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,16 +50,37 @@ public class MainActivity extends AppCompatActivity {
 
     }
     private void generateFragment(){
-        homeFragment = new HomeFragment(this);
-        timelineFragment = new TimeLineFragment(this);
-        alarmFragment = new AlarmFragment(this);
-        communityFragment = new CommunityFragment(this);
+        homeFragment = HomeFragment.newInstance(this);
+        timelineFragment = TimeLineFragment.newInstance(this);
+        alarmFragment = AlarmFragment.newInstance(this);
+        communityFragment = CommunityFragment.newInstance(this);
+        profileFragment = ProfileFragment.newInstance(this);
         fragments = new ArrayList<>();
         fragments.add(homeFragment);
         fragments.add(timelineFragment);
+//        fragments.add(communityFragment);
         fragments.add(alarmFragment);
-        fragments.add(communityFragment);
+        fragments.add(profileFragment);
         container = findViewById(R.id.container);
+        fab = findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if (communityFragment.isAdded()){
+                    transaction = getSupportFragmentManager().beginTransaction();
+                    transaction.remove(communityFragment);
+                    transaction.addToBackStack(null);
+                    communityFragment = CommunityFragment.newInstance(MainActivity.this);
+                    transaction.commit();
+                }
+                transaction = getSupportFragmentManager().beginTransaction();
+                transaction.add(R.id.content_fragment_layout, communityFragment);
+                transaction.commit();
+                bottomNavigationView.getMenu().getItem(2).setChecked(true);
+
+            }
+        });
         container.setAdapter(new MainPageViewPagerAdapter(getSupportFragmentManager(),this,fragments));
         container.setOffscreenPageLimit(3);
         container.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -63,11 +91,14 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onPageSelected(int position) {
+                Log.e("po",position+"");
                 if(position < 2) {
                     bottomNavigationView.getMenu().getItem(position).setChecked(true);
                 }else{
                     bottomNavigationView.getMenu().getItem(position+1).setChecked(true);
                 }
+
+
             }
 
             @Override
@@ -91,6 +122,13 @@ public class MainActivity extends AppCompatActivity {
     private BottomNavigationView.OnNavigationItemSelectedListener myOnNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            if (communityFragment.isAdded()){
+                transaction = getSupportFragmentManager().beginTransaction();
+                transaction.remove(communityFragment);
+                transaction.addToBackStack(null);
+                transaction.commit();
+            }
+            Log.e("onNavi",item.getItemId()+"");
             switch (item.getItemId()) {
                 case R.id.bottomIconHome:
 //                    getSupportFragmentManager().beginTransaction().replace(R.id.content_fragment_layout,fragments.get(0)).commit();
