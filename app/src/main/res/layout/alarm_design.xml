@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:elevation="10dp"
+    android:background="@drawable/background_alarm_rnd"
+    android:paddingVertical="15dp"
+    android:paddingHorizontal="12dp"
+    android:orientation="vertical"
+    android:layout_marginBottom="30dp">
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="13dp"
+        android:fontFamily="@font/jalnan"
+        android:textColor="@color/gray"
+        android:text="오늘의 키워드 ~~~에서 댓글이 달렸습니다."/>
+    <TextView
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        android:fontFamily="@font/bm_jua"
+        android:textColor="@color/default_font_color"
+        android:layout_marginTop="19dp"
+        android:text="김철순 여름여름~"/>
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="13dp"
+        android:fontFamily="@font/bm_jua"
+        android:textColor="@color/gray"
+        android:layout_marginTop="13dp"
+        android:text="5분전"/>
+
+</LinearLayout>

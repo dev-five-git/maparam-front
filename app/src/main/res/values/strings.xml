@@ -41,6 +41,11 @@
     <string name="addImage">이미지 추가</string>
     <string name="more">...더보기</string>
     <string name="TimeLineTitle">타임라인</string>
+    <string name="alarm_text">알림</string>
+    <string name="delete_all_alarm">알림 모두 제거</string>
+    <string name="make_my_maparam_text">내 마파람 만들기</string>
+    <string name="find_maparam">마파람 찾기</string>
+    <string name="maparam_with_you">당신과 함께하는 마파람들</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
