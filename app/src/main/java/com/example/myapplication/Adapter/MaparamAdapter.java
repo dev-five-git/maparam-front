@@ -1,14 +1,17 @@
 package com.example.myapplication.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.myapplication.Activities.MaparamGroupActivity;
 import com.example.myapplication.Model.AlarmModel;
 import com.example.myapplication.Model.MaparamModel;
 import com.example.myapplication.R;
@@ -17,9 +20,10 @@ import java.util.ArrayList;
 
 public class MaparamAdapter extends RecyclerView.Adapter<MaparamAdapter.MaparmViewHolder> {
     ArrayList<MaparamModel> maparams;
-
-    public MaparamAdapter(ArrayList<MaparamModel> maparams) {
+    Context context;
+    public MaparamAdapter(ArrayList<MaparamModel> maparams,Context context) {
         this.maparams = maparams;
+        this.context = context;
     }
 
     @NonNull
@@ -36,6 +40,13 @@ public class MaparamAdapter extends RecyclerView.Adapter<MaparamAdapter.MaparmVi
         MaparamModel maparam = maparams.get(position);
         holder.group_name.setText(maparam.getGroupName());
         holder.description.setText("인원수 "+maparam.getMemberNum()+"/"+maparam.getMaxMemberNum()+", 파람장:"+maparam.getGroupHeadName()+", 생성일자:"+maparam.getSince());
+        holder.shell.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, MaparamGroupActivity.class);
+                context.startActivity(intent);
+            }
+        });
     }
     @Override
     public int getItemViewType(int position) {
@@ -82,10 +93,12 @@ public class MaparamAdapter extends RecyclerView.Adapter<MaparamAdapter.MaparmVi
     public class MaparmViewHolder extends RecyclerView.ViewHolder{
        TextView group_name;
        TextView description;
+       LinearLayout shell;
         public MaparmViewHolder(@NonNull View itemView) {
             super(itemView);
             group_name = itemView.findViewById(R.id.group_name);
             description = itemView.findViewById(R.id.description);
+            shell = itemView.findViewById(R.id.shell);
         }
     }
 }
