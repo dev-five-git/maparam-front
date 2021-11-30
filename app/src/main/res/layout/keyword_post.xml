@@ -5,16 +5,22 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:paddingHorizontal="13.5dp">
-    <ImageButton
-        android:id="@+id/menu"
+    <LinearLayout
+        android:id="@+id/menu_shell"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="22.5dp"
         android:layout_marginRight="16dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
-        android:background="@drawable/keyword_post_menu"
-        />
+        android:padding="5dp">
+        <ImageButton
+            android:id="@+id/menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/keyword_post_menu"
+            />
+    </LinearLayout>
     <View
         android:layout_marginBottom="11dp"
         android:layout_alignParentTop="true"
@@ -62,7 +68,7 @@
         android:layout_height="wrap_content"
         android:textColor="@color/gray"
         android:text="2020.12.31"
-        android:layout_alignEnd="@id/menu"
+        android:layout_alignEnd="@id/menu_shell"
         android:layout_alignTop="@id/age"
         android:textSize="12sp"/>
     <ImageView
@@ -73,7 +79,7 @@
         android:layout_below="@id/profile"
         android:layout_marginTop="25dp"
         android:layout_alignLeft="@id/profile"
-        android:layout_alignRight="@id/menu"
+        android:layout_alignRight="@id/menu_shell"
         android:layout_marginHorizontal="25dp"
         android:adjustViewBounds="true"
         android:scaleType="fitXY"
@@ -85,7 +91,7 @@
         android:layout_below="@id/image"
         android:layout_marginTop="25dp"
         android:layout_alignLeft="@id/profile"
-        android:layout_alignRight="@id/menu"
+        android:layout_alignRight="@id/menu_shell"
         android:orientation="vertical">
         <TextView
             android:id="@+id/post_text"

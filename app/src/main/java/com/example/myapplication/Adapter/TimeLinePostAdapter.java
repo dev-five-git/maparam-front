@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,20 +13,22 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.myapplication.Dialog.HomePostMenuDialog;
+import com.example.myapplication.Dialog.TimeLinePostMenuDialog;
 import com.example.myapplication.Model.KeywordPostModel;
+import com.example.myapplication.Model.TimeLinePostModel;
 import com.example.myapplication.R;
 
 import java.util.ArrayList;
 
-public class KeywordPostAdapter extends RecyclerView.Adapter<KeywordPostAdapter.KeywordPostViewHolder> implements HomePostMenuDialog.ClickButton {
-    ArrayList<KeywordPostModel> posts;
+public class TimeLinePostAdapter extends RecyclerView.Adapter<TimeLinePostAdapter.TimeLinePostViewHolder> {
+    ArrayList<TimeLinePostModel> posts;
     Context context;
     ClickButton clickButton;
     Boolean commentShow = false;
     public interface ClickButton {
         void clickComment();
     }
-    public KeywordPostAdapter(ArrayList<KeywordPostModel> kewords,Context context,ClickButton clickButton) {
+    public TimeLinePostAdapter(ArrayList<TimeLinePostModel> kewords, Context context, ClickButton clickButton) {
         this.posts = kewords;
         this.context = context;
         this.commentShow = false;
@@ -36,16 +37,16 @@ public class KeywordPostAdapter extends RecyclerView.Adapter<KeywordPostAdapter.
 
     @NonNull
     @Override
-    public KeywordPostViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public TimeLinePostViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         Context context = parent.getContext();
-        View view = LayoutInflater.from(context).inflate(R.layout.keyword_post, parent, false);
-        KeywordPostViewHolder couponViewHolder = new KeywordPostViewHolder(view);
+        View view = LayoutInflater.from(context).inflate(R.layout.time_line_post, parent, false);
+        TimeLinePostViewHolder couponViewHolder = new TimeLinePostViewHolder(view);
         return couponViewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull KeywordPostViewHolder holder, int position) {
-        KeywordPostModel post = posts.get(position);
+    public void onBindViewHolder(@NonNull TimeLinePostViewHolder holder, int position) {
+        TimeLinePostModel post = posts.get(position);
         holder.user_name.setText(post.getName());
         holder.age.setText(post.getAge());
         holder.date.setText(post.getDate());
@@ -62,7 +63,7 @@ public class KeywordPostAdapter extends RecyclerView.Adapter<KeywordPostAdapter.
             holder.imageView.setVisibility(View.GONE);
         }
     }
-    public void commentBuilding(KeywordPostViewHolder holder, int position) {
+    public void commentBuilding(TimeLinePostViewHolder holder, int position) {
         holder.comment_count.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -77,13 +78,13 @@ public class KeywordPostAdapter extends RecyclerView.Adapter<KeywordPostAdapter.
             }
         });
     }
-    public void menuBuilding(KeywordPostViewHolder holder, int position){
-        holder.menu_shell.setOnClickListener(new View.OnClickListener() {
+    public void menuBuilding(TimeLinePostViewHolder holder, int position){
+        holder.menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                HomePostMenuDialog dialog = new HomePostMenuDialog(context, holder, new HomePostMenuDialog.ClickButton() {
+                TimeLinePostMenuDialog dialog = new TimeLinePostMenuDialog(context, holder, new TimeLinePostMenuDialog.ClickButton() {
                     @Override
-                    public void clickEdit(KeywordPostViewHolder holder) {
+                    public void clickEdit(TimeLinePostViewHolder holder) {
                         if (holder.post_text.getVisibility() == View.VISIBLE) {
                             holder.post_text.setVisibility(View.GONE);
                             holder.post_edit.setVisibility(View.VISIBLE);
@@ -96,7 +97,7 @@ public class KeywordPostAdapter extends RecyclerView.Adapter<KeywordPostAdapter.
                     }
 
                     @Override
-                    public void clickDel(KeywordPostViewHolder holder) {
+                    public void clickDel(TimeLinePostViewHolder holder) {
                         posts.remove(position);
                         notifyDataSetChanged();
                     }
@@ -120,24 +121,24 @@ public class KeywordPostAdapter extends RecyclerView.Adapter<KeywordPostAdapter.
     }
 
     @Override
-    public boolean onFailedToRecycleView(@NonNull KeywordPostAdapter.KeywordPostViewHolder holder) {
+    public boolean onFailedToRecycleView(@NonNull TimeLinePostViewHolder holder) {
         return super.onFailedToRecycleView(holder);
     }
 
     @Override
-    public void onViewAttachedToWindow(@NonNull KeywordPostAdapter.KeywordPostViewHolder holder) {
+    public void onViewAttachedToWindow(@NonNull TimeLinePostViewHolder holder) {
         super.onViewAttachedToWindow(holder);
     }
 
     @Override
-    public void onViewRecycled(@NonNull KeywordPostAdapter.KeywordPostViewHolder holder) {
+    public void onViewRecycled(@NonNull TimeLinePostViewHolder holder) {
         super.onViewRecycled(holder);
     }
 
 
 
     @Override
-    public void onViewDetachedFromWindow(@NonNull KeywordPostAdapter.KeywordPostViewHolder holder) {
+    public void onViewDetachedFromWindow(@NonNull TimeLinePostViewHolder holder) {
         super.onViewDetachedFromWindow(holder);
     }
 
@@ -146,26 +147,26 @@ public class KeywordPostAdapter extends RecyclerView.Adapter<KeywordPostAdapter.
         super.onAttachedToRecyclerView(recyclerView);
     }
 
-    @Override
-    public void clickEdit(KeywordPostViewHolder holder) {
-        if (holder.post_text.getVisibility() == View.VISIBLE) {
-            holder.post_text.setVisibility(View.GONE);
-            holder.post_edit.setVisibility(View.VISIBLE);
-            holder.post_edit.setText(holder.post_text.getText().toString());
-        }else{
-            holder.post_text.setVisibility(View.VISIBLE);
-            holder.post_edit.setVisibility(View.GONE);
-            holder.post_text.setText(holder.post_edit.getText().toString());
-        }
-    }
+//    @Override
+//    public void clickEdit(TimeLinePostViewHolder holder) {
+//        if (holder.post_text.getVisibility() == View.VISIBLE) {
+//            holder.post_text.setVisibility(View.GONE);
+//            holder.post_edit.setVisibility(View.VISIBLE);
+//            holder.post_edit.setText(holder.post_text.getText().toString());
+//        }else{
+//            holder.post_text.setVisibility(View.VISIBLE);
+//            holder.post_edit.setVisibility(View.GONE);
+//            holder.post_text.setText(holder.post_edit.getText().toString());
+//        }
+//    }
+//
+//    @Override
+//    public void clickDel(TimeLinePostViewHolder holder) {
+//
+//    }
 
-    @Override
-    public void clickDel(KeywordPostViewHolder holder) {
 
-    }
-
-
-    public class KeywordPostViewHolder extends RecyclerView.ViewHolder{
+    public class TimeLinePostViewHolder extends RecyclerView.ViewHolder{
         ImageView menu;
         ImageView profile;
         TextView user_name;
@@ -175,10 +176,10 @@ public class KeywordPostAdapter extends RecyclerView.Adapter<KeywordPostAdapter.
         EditText post_edit;
         TextView comment_count;
         TextView like_count;
+        TextView tag_list_text;
         ImageView imageView;
-        LinearLayout menu_shell;
 
-        public KeywordPostViewHolder(@NonNull View itemView) {
+        public TimeLinePostViewHolder(@NonNull View itemView) {
             super(itemView);
             menu = itemView.findViewById(R.id.menu);
             profile = itemView.findViewById(R.id.profile);
@@ -190,7 +191,7 @@ public class KeywordPostAdapter extends RecyclerView.Adapter<KeywordPostAdapter.
             comment_count = itemView.findViewById(R.id.comment_count);
             like_count = itemView.findViewById(R.id.like_count);
             imageView = itemView.findViewById(R.id.image);
-            menu_shell = itemView.findViewById(R.id.menu_shell);
+            tag_list_text = itemView.findViewById(R.id.tag_list_text);
 
         }
     }

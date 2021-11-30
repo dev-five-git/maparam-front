@@ -1,9 +1,5 @@
 package com.example.myapplication.Activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,6 +9,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.myapplication.Adapter.KeywordPostCommentAdapter;
 import com.example.myapplication.Dialog.HomePostSoleMenuDialog;
 import com.example.myapplication.Model.KeywordPostCommentModel;
@@ -20,7 +20,7 @@ import com.example.myapplication.R;
 
 import java.util.ArrayList;
 
-public class HomeCommentDetailActivity extends AppCompatActivity {
+public class TimeLineCommentDetailActivity extends AppCompatActivity {
     ArrayList<KeywordPostCommentModel> models = new ArrayList<>();
     TextView nameText;
     TextView dateText;
@@ -41,7 +41,7 @@ public class HomeCommentDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_keyword_comment_detail);
+        setContentView(R.layout.activity_timeline_comment_detail);
         nameText = findViewById(R.id.user_name);
         dateText = findViewById(R.id.date);
         commentCount = findViewById(R.id.comment_count);
@@ -100,7 +100,7 @@ public class HomeCommentDetailActivity extends AppCompatActivity {
         shell.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                HomePostSoleMenuDialog dialog = new HomePostSoleMenuDialog(HomeCommentDetailActivity.this, new HomePostSoleMenuDialog.ClickButton() {
+                HomePostSoleMenuDialog dialog = new HomePostSoleMenuDialog(TimeLineCommentDetailActivity.this, new HomePostSoleMenuDialog.ClickButton() {
 
                     public void clickEdit() {
 
@@ -127,7 +127,7 @@ public class HomeCommentDetailActivity extends AppCompatActivity {
         menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                HomePostSoleMenuDialog dialog = new HomePostSoleMenuDialog(HomeCommentDetailActivity.this, new HomePostSoleMenuDialog.ClickButton() {
+                HomePostSoleMenuDialog dialog = new HomePostSoleMenuDialog(TimeLineCommentDetailActivity.this, new HomePostSoleMenuDialog.ClickButton() {
 
                     public void clickEdit() {
 

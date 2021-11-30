@@ -1,9 +1,11 @@
 package com.example.myapplication.Fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
@@ -12,8 +14,13 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.myapplication.Activities.HomeCommentDetailActivity;
+import com.example.myapplication.Adapter.TimeLinePostAdapter;
+import com.example.myapplication.Model.TimeLinePostModel;
 import com.example.myapplication.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -27,7 +34,8 @@ public class TimeLineFragment extends Fragment {
     TextView moreText;
     RecyclerView timeLinePostRecycler;
     FloatingActionButton addPostBtn;
-
+    TimeLinePostAdapter adapter;
+    private ArrayList<TimeLinePostModel> timeLinePostModels;
     private View view;
     private Context context;
     public TimeLineFragment(Context context) {
@@ -57,10 +65,28 @@ public class TimeLineFragment extends Fragment {
         moreText = view.findViewById(R.id.more_text);
         timeLinePostRecycler = view.findViewById(R.id.TimeLinePostRecycler);
         addPostBtn = view.findViewById(R.id.addPostBtn);
+        makingAdapter();
 
-        for (int i = 0;i<15;i++){
-
-        }
         return view;
+    }
+
+    public void makingAdapter(){
+        timeLinePostModels = new ArrayList<>();
+        for (int i = 0;i<15;i++){
+            ArrayList<String> tagList = new ArrayList<>();
+            for (int j = 0;j<5;j++){
+                tagList.add(i+"번째");
+            }
+            TimeLinePostModel model = new TimeLinePostModel("dd"+i,"123","sdFsd","qwer","",i,i,tagList);
+            timeLinePostModels.add(model);
+        }
+        adapter = new TimeLinePostAdapter(timeLinePostModels,context, new TimeLinePostAdapter.ClickButton() {
+            @Override
+            public void clickComment() {
+                getActivity().startActivity(new Intent(getActivity(), HomeCommentDetailActivity.class));
+            }
+        });
+        timeLinePostRecycler.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
+        timeLinePostRecycler.setAdapter(adapter);
     }
 }
