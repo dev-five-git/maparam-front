@@ -1,6 +1,8 @@
 package com.example.myapplication.Fragment;
 
 import android.content.Context;
+import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -12,8 +14,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 
+import com.example.myapplication.Activities.FindMaparamActivity;
 import com.example.myapplication.Adapter.MaparamAdapter;
+import com.example.myapplication.Dialog.MakeMyMaparamDialog;
 import com.example.myapplication.Model.MaparamModel;
 import com.example.myapplication.R;
 
@@ -29,6 +34,7 @@ public class CommunityFragment extends Fragment {
 
     RecyclerView maparamGroupRecycler;
     Button makeGroupBtn;
+    ImageButton searchBtn;
     ArrayList<MaparamModel> maparams;
     MaparamAdapter adapter;
    private View view;
@@ -63,13 +69,30 @@ public class CommunityFragment extends Fragment {
         view= inflater.inflate(R.layout.fragment_community,container,false);
         maparamGroupRecycler = view.findViewById(R.id.MaparamGroupRecycler);
         makeGroupBtn = view.findViewById(R.id.makeGroup);
+        searchBtn = view.findViewById(R.id.searchBtn);
         buildingMakeGroupBtn();
+        buildingSearchBtn();
         getData();
         return view;
     }
 
     private void buildingMakeGroupBtn() {
-        
+        makeGroupBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MakeMyMaparamDialog dialog = new MakeMyMaparamDialog(context);
+                dialog.callFunction();
+            }
+        });
+    }
+    private void buildingSearchBtn(){
+        searchBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, FindMaparamActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     public void getData(){
@@ -78,7 +101,7 @@ public class CommunityFragment extends Fragment {
             MaparamModel maparam = new MaparamModel("ㅇㄹ"+i,"강형민"+i,"werqwerqwer",i,i);
             maparams.add(maparam);
         }
-        adapter = new MaparamAdapter(maparams);
+        adapter = new MaparamAdapter(maparams,context);
         maparamGroupRecycler.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
         maparamGroupRecycler.setAdapter(adapter);
     }
