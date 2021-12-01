@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.myapplication.Dialog.HomePostMenuDialog;
+import com.example.myapplication.Dialog.MaparamImInDialog;
 import com.example.myapplication.Model.KeywordPostModel;
 import com.example.myapplication.R;
 
@@ -61,6 +62,13 @@ public class KeywordPostAdapter extends RecyclerView.Adapter<KeywordPostAdapter.
         }else{
             holder.imageView.setVisibility(View.GONE);
         }
+        holder.profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MaparamImInDialog dialog = new MaparamImInDialog(context);
+                dialog.callFunction();
+            }
+        });
     }
     public void commentBuilding(KeywordPostViewHolder holder, int position) {
         holder.comment_count.setOnClickListener(new View.OnClickListener() {

@@ -61,6 +61,12 @@
     <string name="groupHeader">- 그룹장</string>
     <string name="profile">프로필</string>
     <string name="outofgroup">탈퇴</string>
+    <string name="edit_profile">프로필 수정하기</string>
+    <string name="maparamImin">참여하는 마파람</string>
+    <string name="maparamImin2">내가 가입한 마파람</string>
+    <string name="my_log">활동 내역</string>
+    <string name="post_keword_amount">오늘의 키워드 게시 수</string>
+    <string name="post_timeLine_amount">타임라인 게시물 게시 수</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
