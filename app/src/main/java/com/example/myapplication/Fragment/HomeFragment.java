@@ -61,14 +61,7 @@ public class HomeFragment extends Fragment {
     public void onResume() {
         super.onResume();
         Log.e(TAG,"D");
-        if(!init){
-            posts.add(0,new KeywordPostModel("ddd","zz","ddf","ddddddddddddddddd",
-                    "https://maparam.s3.ap-northeast-2.amazonaws.com/6ce1e5f4-5d01-4bae-a3ba-e29b66a91060.png",0,0));
-            Log.e("qq",posts.size()+"");
-            adapter.notifyDataSetChanged();
-        }else{
-            init = false;
-        }
+
 
     }
     @Override
@@ -93,9 +86,15 @@ public class HomeFragment extends Fragment {
     public void makingAdapter(){
         posts = new ArrayList<>();
         for (int i = 0 ; i<15;i++) {
+            KeywordPostModel post;
 //            KeywordPostModel post = new KeywordPostModel(i+"",i+"",i+"",i+"","https://maparam.s3.ap-northeast-2.amazonaws.com/6ce1e5f4-5d01-4bae-a3ba-e29b66a91060.png",i,i);
-            KeywordPostModel post = new KeywordPostModel(i+"",i+"",i+"",i+"",
-                    "",i,i);
+            if (i % 2 == 0 ) {
+                post = new KeywordPostModel("마파람",  "20대", "2021-12-01", "마파람 로고입니다",
+                        "", i, i);
+            }else{
+                post = new KeywordPostModel("마파람", "20대", "2021-12-01", "마파람 로고입니다",
+                    "https://postfiles.pstatic.net/MjAyMTEyMDFfMjEw/MDAxNjM4MzUwNTA1MDIx.G0T_h-dSZOCzEim1GHmXKKEGE3H825gARh6bEfGEcocg.aUZ5pX-u81tDGlP5dxcXdqiQUnaeqOrbndBiNcGMgrMg.PNG.xldi29/%EB%AC%BC%EA%B2%B0%EA%B3%A0%EB%9E%98.png?type=w966", i, i);
+            }
             posts.add(post);
         }
         adapter = new KeywordPostAdapter(posts, context, new KeywordPostAdapter.ClickButton() {
@@ -116,13 +115,14 @@ public class HomeFragment extends Fragment {
         addPostBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                posts.add(0,new KeywordPostModel("ddd","zz","ddf","ddddddddddddddddd",
-                        "https://maparam.s3.ap-northeast-2.amazonaws.com/6ce1e5f4-5d01-4bae-a3ba-e29b66a91060.png",0,0));
-                Log.e("dd",posts.size()+"");
+                posts.add(0,new KeywordPostModel("마파람","20대","2021-12-01","마파람 로고입니다",
+                        "https://postfiles.pstatic.net/MjAyMTEyMDFfMjEw/MDAxNjM4MzUwNTA1MDIx.G0T_h-dSZOCzEim1GHmXKKEGE3H825gARh6bEfGEcocg.aUZ5pX-u81tDGlP5dxcXdqiQUnaeqOrbndBiNcGMgrMg.PNG.xldi29/%EB%AC%BC%EA%B2%B0%EA%B3%A0%EB%9E%98.png?type=w966",0,0));
+
                 adapter.notifyDataSetChanged();
                 Intent intent = new Intent(context, AddPostActivity.class);
                 context.startActivity(intent);
             }
         });
     }
+
 }

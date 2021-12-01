@@ -1,6 +1,7 @@
 package com.example.myapplication.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.myapplication.Activities.HomeCommentDetailActivity;
 import com.example.myapplication.Model.AlarmModel;
 import com.example.myapplication.R;
 
@@ -16,9 +18,10 @@ import java.util.ArrayList;
 
 public class AlarmAdapter extends RecyclerView.Adapter<AlarmAdapter.AlarmViewHolder> {
     ArrayList<AlarmModel> alarms;
-
-    public AlarmAdapter(ArrayList<AlarmModel> alarms) {
+    Context context;
+    public AlarmAdapter(ArrayList<AlarmModel> alarms,Context context) {
         this.alarms = alarms;
+        this.context = context;
     }
 
     @NonNull
@@ -36,6 +39,13 @@ public class AlarmAdapter extends RecyclerView.Adapter<AlarmAdapter.AlarmViewHol
         holder.title.setText(alarm.getTitle());
         holder.content.setText(alarm.getContent());
         holder.time.setText(alarm.getTime()+"분전");
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, HomeCommentDetailActivity.class);
+                context.startActivity(intent);
+            }
+        });
     }
     @Override
     public int getItemViewType(int position) {

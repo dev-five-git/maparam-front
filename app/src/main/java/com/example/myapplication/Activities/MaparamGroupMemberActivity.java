@@ -13,6 +13,7 @@ import com.example.myapplication.Dialog.MemberListDialog;
 import com.example.myapplication.R;
 
 public class MaparamGroupMemberActivity extends AppCompatActivity {
+    public static int Tier = 1;
     Button backBtn;
     Button view_group_member;
     ImageButton notice_btn;
@@ -35,7 +36,7 @@ public class MaparamGroupMemberActivity extends AppCompatActivity {
         view_group_member.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                MemberListDialog dialog = new MemberListDialog(MaparamGroupMemberActivity.this);
+                MemberListDialog dialog = new MemberListDialog(MaparamGroupMemberActivity.this,Tier);
                 dialog.callFunction();
             }
         });

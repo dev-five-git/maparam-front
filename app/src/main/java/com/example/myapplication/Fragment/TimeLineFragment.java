@@ -16,8 +16,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.myapplication.Activities.HomeCommentDetailActivity;
+import com.example.myapplication.Activities.TimeLineCommentDetailActivity;
 import com.example.myapplication.Activities.TimeLineMapActivity;
 import com.example.myapplication.Adapter.TimeLinePostAdapter;
+import com.example.myapplication.Model.KeywordPostModel;
 import com.example.myapplication.Model.TimeLinePostModel;
 import com.example.myapplication.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -79,17 +81,25 @@ public class TimeLineFragment extends Fragment {
     public void makingAdapter(){
         timeLinePostModels = new ArrayList<>();
         for (int i = 0;i<15;i++){
+            TimeLinePostModel model;
             ArrayList<String> tagList = new ArrayList<>();
-            for (int j = 0;j<5;j++){
-                tagList.add(i+"번째");
+            for (int j = 0;j<1;j++){
+                tagList.add("마파람");
             }
-            TimeLinePostModel model = new TimeLinePostModel("dd"+i,"123","sdFsd","qwer","",i,i,tagList);
+            if (i % 2 == 0 ) {
+                model = new TimeLinePostModel("마파람", "20대", "2021-12-01", "마파람 로고입니다",
+                        "https://postfiles.pstatic.net/MjAyMTEyMDFfMjEw/MDAxNjM4MzUwNTA1MDIx.G0T_h-dSZOCzEim1GHmXKKEGE3H825gARh6bEfGEcocg.aUZ5pX-u81tDGlP5dxcXdqiQUnaeqOrbndBiNcGMgrMg.PNG.xldi29/%EB%AC%BC%EA%B2%B0%EA%B3%A0%EB%9E%98.png?type=w966",i,i,tagList);
+
+            }else{
+                model = new TimeLinePostModel("마파람", "20대", "2021-12-01", "마파람 로고입니다",
+                        "",i,i,tagList);
+            }
             timeLinePostModels.add(model);
         }
         adapter = new TimeLinePostAdapter(timeLinePostModels,context, new TimeLinePostAdapter.ClickButton() {
             @Override
             public void clickComment() {
-                getActivity().startActivity(new Intent(getActivity(), HomeCommentDetailActivity.class));
+                getActivity().startActivity(new Intent(getActivity(), TimeLineCommentDetailActivity.class));
             }
         });
         timeLinePostRecycler.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));

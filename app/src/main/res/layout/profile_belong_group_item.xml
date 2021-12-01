@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    >
+    <LinearLayout
+        android:layout_toLeftOf="@id/join_requestBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="17dp"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="20dp">
+        <TextView
+            android:id="@+id/group_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/bm_jua"
+            android:textSize="13sp"
+            android:text="- 독서를 좋아하는 사람들의 모임(독좋사)"
+            android:textColor="@color/gray"/>
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/bm_jua"
+            android:textSize="10sp"
+            android:text="인원수 15/50, 파람장: 김혜련, 생성일자:2021/07.20"
+            android:textColor="@color/gray"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/join_requestBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="0dp"
+        android:minWidth="0dp"
+        android:text="@string/join_request"
+        android:background="@drawable/background_blue_rnd_5"
+        android:textColor="@color/white"
+        android:textSize="10sp"
+        android:fontFamily="@font/jalnan"
+        android:paddingVertical="3dp"
+        android:paddingHorizontal="7dp"
+        android:layout_marginRight="36dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"/>
+
+</RelativeLayout>

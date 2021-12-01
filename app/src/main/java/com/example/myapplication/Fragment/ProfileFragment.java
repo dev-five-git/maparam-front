@@ -4,11 +4,15 @@ import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
+import com.example.myapplication.Adapter.ProfileBelongGroupAdapter;
 import com.example.myapplication.R;
 
 /**
@@ -18,6 +22,10 @@ import com.example.myapplication.R;
  */
 public class ProfileFragment extends Fragment {
     Context context;
+    View view;
+    RecyclerView maparam_I_have_recycler;
+    ProfileBelongGroupAdapter adapter;
+    Button backBtn;
     public ProfileFragment() {
         // Required empty public constructor
     }
@@ -43,6 +51,17 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false);
+        view = inflater.inflate(R.layout.fragment_profile, container, false);
+        maparam_I_have_recycler = view.findViewById(R.id.maparam_I_have_recycler);
+        backBtn = view.findViewById(R.id.backBtn);
+        backBtn.setVisibility(View.INVISIBLE);
+        makingAdapter();
+        return view;
+    }
+
+    private void makingAdapter() {
+        adapter = new ProfileBelongGroupAdapter(true);
+        maparam_I_have_recycler.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
+        maparam_I_have_recycler.setAdapter(adapter);
     }
 }

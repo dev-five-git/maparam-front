@@ -80,11 +80,11 @@ public class AlarmFragment extends Fragment {
     }
     public void makingAdapter(){
         alarms = new ArrayList<>();
-        for (int i = 0 ; i<15;i++) {
-            AlarmModel alarm = new AlarmModel(i+"",i+"",i);
+        for (int i = 0 ; i<1;i++) {
+            AlarmModel alarm = new AlarmModel("오늘의 키워드 : 봄 에서 하태영 님에게 댓글이 달렸습니다.","가을가을?",3);
             alarms.add(alarm);
         }
-        adapter = new AlarmAdapter(alarms);
+        adapter = new AlarmAdapter(alarms,context);
         alarmRecycler.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
         alarmRecycler.setAdapter(adapter);
     }

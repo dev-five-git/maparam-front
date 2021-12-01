@@ -4,36 +4,39 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.Model.KeywordModel;
+import com.example.myapplication.Activities.MaparamGroupHeaderActivity;
 import com.example.myapplication.R;
 
-import java.util.ArrayList;
-
-public class MemberListDialogAdapter extends RecyclerView.Adapter<MemberListDialogAdapter.KeywordViewHolder> {
+public class MemberListDialogAdapter extends RecyclerView.Adapter<MemberListDialogAdapter.MemberListViewHolder> {
     int num;
-
-    public MemberListDialogAdapter(int num) {
+    int tier;
+    public MemberListDialogAdapter(int num,int tier) {
         this.num = num;
+        this.tier = tier;
     }
 
     @NonNull
     @Override
-    public KeywordViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public MemberListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         Context context = parent.getContext();
         View view = LayoutInflater.from(context).inflate(R.layout.dialog_member_list_item, parent, false);
-        KeywordViewHolder viewHolder = new KeywordViewHolder(view);
+        MemberListViewHolder viewHolder = new MemberListViewHolder(view);
         return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull KeywordViewHolder holder, int position) {
-
-
+    public void onBindViewHolder(@NonNull MemberListViewHolder holder, int position) {
+        if(tier == MaparamGroupHeaderActivity.TIER) {
+            //holder.itemView.out;
+            holder.outOfGroup.setVisibility(View.VISIBLE);
+        }else{
+            holder.outOfGroup.setVisibility(View.GONE);
+        }
     }
     @Override
     public int getItemViewType(int position) {
@@ -49,24 +52,24 @@ public class MemberListDialogAdapter extends RecyclerView.Adapter<MemberListDial
     }
 
     @Override
-    public boolean onFailedToRecycleView(@NonNull MemberListDialogAdapter.KeywordViewHolder holder) {
+    public boolean onFailedToRecycleView(@NonNull MemberListViewHolder holder) {
         return super.onFailedToRecycleView(holder);
     }
 
     @Override
-    public void onViewAttachedToWindow(@NonNull MemberListDialogAdapter.KeywordViewHolder holder) {
+    public void onViewAttachedToWindow(@NonNull MemberListViewHolder holder) {
         super.onViewAttachedToWindow(holder);
     }
 
     @Override
-    public void onViewRecycled(@NonNull MemberListDialogAdapter.KeywordViewHolder holder) {
+    public void onViewRecycled(@NonNull MemberListViewHolder holder) {
         super.onViewRecycled(holder);
     }
 
 
 
     @Override
-    public void onViewDetachedFromWindow(@NonNull MemberListDialogAdapter.KeywordViewHolder holder) {
+    public void onViewDetachedFromWindow(@NonNull MemberListViewHolder holder) {
         super.onViewDetachedFromWindow(holder);
     }
 
@@ -77,11 +80,11 @@ public class MemberListDialogAdapter extends RecyclerView.Adapter<MemberListDial
 
 
 
-    public class KeywordViewHolder extends RecyclerView.ViewHolder{
-
-        public KeywordViewHolder(@NonNull View itemView) {
+    public class MemberListViewHolder extends RecyclerView.ViewHolder{
+        Button outOfGroup;
+        public MemberListViewHolder(@NonNull View itemView) {
             super(itemView);
-
+            outOfGroup = itemView.findViewById(R.id.outOfGroup);
         }
     }
 }

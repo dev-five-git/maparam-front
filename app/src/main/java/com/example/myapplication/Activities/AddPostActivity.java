@@ -23,6 +23,7 @@ public class AddPostActivity extends AppCompatActivity {
     EditText type_post;
     ImageView image;
     ImageButton addImageBtn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +35,7 @@ public class AddPostActivity extends AppCompatActivity {
         image = findViewById(R.id.image);
         addImageBtn = findViewById(R.id.addImageBtn);
         findImage();
-
+        setAddPostBtn();
 
     }
     public void setAddPostBtn(){

@@ -74,6 +74,7 @@
                 android:textSize="7sp"
                 android:fontFamily="@font/jalnan"/>
             <Button
+                android:id="@+id/outOfGroup"
                 android:gravity="center"
                 android:layout_weight="1"
                 android:minHeight="0dp"
