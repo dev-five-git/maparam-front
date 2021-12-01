@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/background_white_rnd_10"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="25dp"
+        android:background="@color/white">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignLeft="@id/buttonFrame"
+            android:text="@string/maparamImin2"
+            android:textColor="@color/default_font_color"
+            android:background="@color/white"
+            android:gravity="left"
+            android:textSize="20sp"
+            android:fontFamily="@font/bm_jua"/>
+        <FrameLayout
+            android:id="@+id/buttonFrame"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerHorizontal="true">
+            <Button
+                android:id="@+id/button"
+                android:layout_gravity="center"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:background="@drawable/close_button"
+               />
+        </FrameLayout>
+
+    </RelativeLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/maparamRecycler"
+        android:layout_width="match_parent"
+        android:layout_height="315dp"
+        android:background="@color/lightgray"
+        ></androidx.recyclerview.widget.RecyclerView>
+
+
+</LinearLayout>

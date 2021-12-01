@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/lightgray">
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:paddingLeft="10dp"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:textColor="@color/gray"
+            android:fontFamily="@font/bm_jua"
+            android:textSize="10sp"
+            android:text="김혜련"/>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:textColor="@color/gray"
+                android:fontFamily="@font/bm_jua"
+                android:textSize="10sp"
+                android:text="- 가입일 : 2021/07/20  "/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:textColor="@color/gray"
+                    android:fontFamily="@font/bm_jua"
+                    android:textSize="10sp"
+                    android:text="- 작성글 : 10개  "/>
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:textColor="@color/gray"
+                    android:fontFamily="@font/bm_jua"
+                    android:textSize="10sp"
+                    android:text="- 작성댓글 : 10개"/>
+            </LinearLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="right">
+            <Button
+                android:gravity="center"
+                android:layout_weight="2"
+                android:minHeight="0dp"
+                android:minWidth="0dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@drawable/background_blue_rnd_5"
+                android:text="@string/profile"
+                android:textColor="@color/white"
+                android:textSize="7sp"
+                android:fontFamily="@font/jalnan"/>
+            <Button
+                android:gravity="center"
+                android:layout_weight="1"
+                android:minHeight="0dp"
+                android:minWidth="0dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@drawable/background_red_rnd_5"
+                android:text="@string/outofgroup"
+                android:textColor="@color/white"
+                android:textSize="7sp"
+                android:fontFamily="@font/jalnan"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

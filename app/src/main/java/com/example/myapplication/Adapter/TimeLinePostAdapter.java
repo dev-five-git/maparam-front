@@ -40,8 +40,8 @@ public class TimeLinePostAdapter extends RecyclerView.Adapter<TimeLinePostAdapte
     public TimeLinePostViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         Context context = parent.getContext();
         View view = LayoutInflater.from(context).inflate(R.layout.time_line_post, parent, false);
-        TimeLinePostViewHolder couponViewHolder = new TimeLinePostViewHolder(view);
-        return couponViewHolder;
+        TimeLinePostViewHolder viewHolder = new TimeLinePostViewHolder(view);
+        return viewHolder;
     }
 
     @Override

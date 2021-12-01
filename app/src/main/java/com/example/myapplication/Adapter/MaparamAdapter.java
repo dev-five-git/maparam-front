@@ -11,8 +11,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.Activities.MaparamGroupActivity;
-import com.example.myapplication.Model.AlarmModel;
+import com.example.myapplication.Activities.MaparamGroupHeaderActivity;
+import com.example.myapplication.Activities.MaparamGroupMemberActivity;
+import com.example.myapplication.Activities.MaparamNotGroupMemberActivity;
 import com.example.myapplication.Model.MaparamModel;
 import com.example.myapplication.R;
 
@@ -31,8 +32,8 @@ public class MaparamAdapter extends RecyclerView.Adapter<MaparamAdapter.MaparmVi
     public MaparmViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         Context context = parent.getContext();
         View view = LayoutInflater.from(context).inflate(R.layout.maparam_list, parent, false);
-        MaparmViewHolder couponViewHolder = new MaparmViewHolder(view);
-        return couponViewHolder;
+        MaparmViewHolder viewHolder = new MaparmViewHolder(view);
+        return viewHolder;
     }
 
     @Override
@@ -43,8 +44,17 @@ public class MaparamAdapter extends RecyclerView.Adapter<MaparamAdapter.MaparmVi
         holder.shell.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, MaparamGroupActivity.class);
-                context.startActivity(intent);
+                if (position % 3 == 0){
+                    Intent intent = new Intent( context, MaparamGroupHeaderActivity.class);
+                    context.startActivity(intent);
+                }else if (position % 3 == 1){
+                    Intent intent = new Intent(context, MaparamGroupMemberActivity.class);
+                    context.startActivity(intent);
+                }else{
+                    Intent intent = new Intent(context, MaparamNotGroupMemberActivity.class);
+                    context.startActivity(intent);
+                }
+
             }
         });
     }

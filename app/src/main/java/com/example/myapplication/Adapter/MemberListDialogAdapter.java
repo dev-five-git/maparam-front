@@ -14,27 +14,25 @@ import com.example.myapplication.R;
 
 import java.util.ArrayList;
 
-public class KeywordAdapter extends RecyclerView.Adapter<KeywordAdapter.KeywordViewHolder> {
-    ArrayList<KeywordModel> keywords;
+public class MemberListDialogAdapter extends RecyclerView.Adapter<MemberListDialogAdapter.KeywordViewHolder> {
+    int num;
 
-    public KeywordAdapter(ArrayList<KeywordModel> kewords) {
-        this.keywords = kewords;
+    public MemberListDialogAdapter(int num) {
+        this.num = num;
     }
 
     @NonNull
     @Override
     public KeywordViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         Context context = parent.getContext();
-        View view = LayoutInflater.from(context).inflate(R.layout.keword_list, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.dialog_member_list_item, parent, false);
         KeywordViewHolder viewHolder = new KeywordViewHolder(view);
         return viewHolder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull KeywordViewHolder holder, int position) {
-        KeywordModel keyword = keywords.get(position);
-        holder.date.setText(keyword.getDate());
-        holder.keyword.setText(keyword.getKeyword());
+
 
     }
     @Override
@@ -43,7 +41,7 @@ public class KeywordAdapter extends RecyclerView.Adapter<KeywordAdapter.KeywordV
     }
     @Override
     public int getItemCount() {
-        return keywords == null? 0 : keywords.size();
+        return num;
     }
     @Override
     public void onDetachedFromRecyclerView(@NonNull RecyclerView recyclerView) {
@@ -51,24 +49,24 @@ public class KeywordAdapter extends RecyclerView.Adapter<KeywordAdapter.KeywordV
     }
 
     @Override
-    public boolean onFailedToRecycleView(@NonNull KeywordAdapter.KeywordViewHolder holder) {
+    public boolean onFailedToRecycleView(@NonNull MemberListDialogAdapter.KeywordViewHolder holder) {
         return super.onFailedToRecycleView(holder);
     }
 
     @Override
-    public void onViewAttachedToWindow(@NonNull KeywordAdapter.KeywordViewHolder holder) {
+    public void onViewAttachedToWindow(@NonNull MemberListDialogAdapter.KeywordViewHolder holder) {
         super.onViewAttachedToWindow(holder);
     }
 
     @Override
-    public void onViewRecycled(@NonNull KeywordAdapter.KeywordViewHolder holder) {
+    public void onViewRecycled(@NonNull MemberListDialogAdapter.KeywordViewHolder holder) {
         super.onViewRecycled(holder);
     }
 
 
 
     @Override
-    public void onViewDetachedFromWindow(@NonNull KeywordAdapter.KeywordViewHolder holder) {
+    public void onViewDetachedFromWindow(@NonNull MemberListDialogAdapter.KeywordViewHolder holder) {
         super.onViewDetachedFromWindow(holder);
     }
 
@@ -80,12 +78,10 @@ public class KeywordAdapter extends RecyclerView.Adapter<KeywordAdapter.KeywordV
 
 
     public class KeywordViewHolder extends RecyclerView.ViewHolder{
-        TextView date;
-        TextView keyword;
+
         public KeywordViewHolder(@NonNull View itemView) {
             super(itemView);
-            date = itemView.findViewById(R.id.date);
-            keyword = itemView.findViewById(R.id.keyword);
+
         }
     }
 }

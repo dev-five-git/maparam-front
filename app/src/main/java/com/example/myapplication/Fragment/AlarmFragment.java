@@ -36,12 +36,13 @@ public class AlarmFragment extends Fragment {
    private Context context;
    private ArrayList<AlarmModel> alarms;
    private AlarmAdapter adapter;
-    public AlarmFragment(Context context) {
-        this.context = context;
+    public AlarmFragment() {
+
     }
 
-    public static AlarmFragment newInstance(String param1, String param2,Context context) {
-        AlarmFragment fragment = new AlarmFragment(context);
+    public static AlarmFragment newInstance(Context context) {
+        AlarmFragment fragment = new AlarmFragment();
+        fragment.context = context;
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;

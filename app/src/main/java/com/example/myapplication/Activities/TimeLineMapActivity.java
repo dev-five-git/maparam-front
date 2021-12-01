@@ -73,13 +73,14 @@ public class TimeLineMapActivity extends AppCompatActivity implements OnMapReady
         UiSettings uiSettings = naverMap.getUiSettings();
         uiSettings.setCompassEnabled(true); // 나침반
         uiSettings.setScaleBarEnabled(true); // 거리
-        uiSettings.setZoomControlEnabled(true); // 줌
-        uiSettings.setLocationButtonEnabled(true); // 내가 있는곳
+        uiSettings.setZoomControlEnabled(false); // 줌
+        uiSettings.setLocationButtonEnabled(false); // 내가 있는곳
+        uiSettings.setScrollGesturesEnabled(false);
+        uiSettings.setRotateGesturesEnabled(false);
         com.naver.maps.geometry.LatLng naverLatLng;
         naverLatLng = new com.naver.maps.geometry.LatLng(myLatlng.latitude,myLatlng.longitude);
         CameraUpdate cameraUpdate = CameraUpdate.scrollTo(naverLatLng);
         naverMap.moveCamera(cameraUpdate);//        naverMap.locat
-
 //        Log.e("kkk",locationSource.getLastLocation().getLatitude()+"dd");
 //        LatLng whereAmI = new LatLng(locationSource.getLastLocation().getLatitude(),locationSource.getLastLocation().getLongitude());
 
