@@ -97,8 +97,8 @@ public class CommunityFragment extends Fragment {
 
     public void getData(){
         maparams = new ArrayList<>();
-        for (int i =0;i<15;i++) {
-            MaparamModel maparam = new MaparamModel("ㅇㄹ"+i,"강형민"+i,"werqwerqwer",i,i);
+        for (int i =2;i<=4;i++) {
+            MaparamModel maparam = new MaparamModel("독서를 좋아하는 사람들의 모임 (독좋사)","강형민","2021-10-15",i,i-1);
             maparams.add(maparam);
         }
         adapter = new MaparamAdapter(maparams,context);

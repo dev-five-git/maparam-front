@@ -16,7 +16,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Design.NoActionBar">
-        <activity android:name=".Activities.MaparamGroupCommentActivity"></activity>
+        <activity android:name=".Activities.MaparamGroupCommentActivity" />
         <activity android:name=".Activities.BlankActivity" />
         <activity android:name=".Activities.MaparamGroupNoticeActivity" />
         <activity android:name=".Activities.MaparamNotGroupMemberActivity" />
@@ -37,6 +37,9 @@
 
         <activity android:name=".Activities.AddPostActivity" />
         <activity android:name=".Activities.HomeCommentDetailActivity" />
+        <activity android:name=".Activities.TimeLineCommentDetailActivity" />
+        <activity android:name=".Activities.ProfileSomeonesActivity" />
+
         <activity
             android:name=".Activities.Register_Addition_Activity"
             android:theme="@style/Theme.MaterialComponents.Light.NoActionBar.Bridge" />

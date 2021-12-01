@@ -1,6 +1,7 @@
 package com.example.myapplication.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.myapplication.Activities.ProfileSomeonesActivity;
 import com.example.myapplication.Dialog.HomePostMenuDialog;
 import com.example.myapplication.Dialog.MaparamImInDialog;
 import com.example.myapplication.Model.KeywordPostModel;
@@ -65,8 +67,10 @@ public class KeywordPostAdapter extends RecyclerView.Adapter<KeywordPostAdapter.
         holder.profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                MaparamImInDialog dialog = new MaparamImInDialog(context);
-                dialog.callFunction();
+                Intent intent = new Intent(context, ProfileSomeonesActivity.class);
+                context.startActivity(intent);
+//                MaparamImInDialog dialog = new MaparamImInDialog(context);
+//                dialog.callFunction();
             }
         });
     }

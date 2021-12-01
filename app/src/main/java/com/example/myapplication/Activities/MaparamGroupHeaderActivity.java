@@ -15,8 +15,9 @@ import com.example.myapplication.R;
 import java.lang.reflect.Member;
 
 public class MaparamGroupHeaderActivity extends AppCompatActivity {
+    public static int TIER = 2;
     Button backBtn;
-    Button view_group_member;
+    Button setting_group_member;
     ImageButton notice_btn;
     ImageButton timeLine_btn;
     TextView group_name;
@@ -26,7 +27,7 @@ public class MaparamGroupHeaderActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maparam_group_header);
         backBtn = findViewById(R.id.backBtn);
-        view_group_member = findViewById(R.id.view_group_member);
+        setting_group_member = findViewById(R.id.setting_group_member);
         group_name = findViewById(R.id.group_name);
         description = findViewById(R.id.description);
         notice_btn = findViewById(R.id.notice_btn);
@@ -35,10 +36,10 @@ public class MaparamGroupHeaderActivity extends AppCompatActivity {
     }
 
     private void buildingButtons() {
-        view_group_member.setOnClickListener(new View.OnClickListener() {
+        setting_group_member.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                MemberListDialog dialog = new MemberListDialog(MaparamGroupHeaderActivity.this);
+                MemberListDialog dialog = new MemberListDialog(MaparamGroupHeaderActivity.this,TIER);
                 dialog.callFunction();
             }
         });

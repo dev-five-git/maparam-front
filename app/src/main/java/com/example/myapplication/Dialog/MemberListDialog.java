@@ -32,9 +32,11 @@ public class MemberListDialog {
     FrameLayout closeFrame;
     Button button;
     RecyclerView memberListRecycler;
+    int tier;
 
-    public MemberListDialog(Context context) {
+    public MemberListDialog(Context context,int tier) {
         this.context = context;
+        this.tier = tier;
     }
     public void callFunction() {
         dlg = new Dialog(context);
@@ -63,7 +65,7 @@ public class MemberListDialog {
             }
         });
 
-        MemberListDialogAdapter adapter = new MemberListDialogAdapter(10);
+        MemberListDialogAdapter adapter = new MemberListDialogAdapter(10,tier);
         memberListRecycler.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
         memberListRecycler.setAdapter(adapter);
 

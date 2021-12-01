@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:textSize="30sp"
             android:fontFamily="@font/jalnan"
-            android:text="오늘의 키워드"
+            android:text="@string/TimeLineTitle"
             android:textColor="@color/mainColor"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"

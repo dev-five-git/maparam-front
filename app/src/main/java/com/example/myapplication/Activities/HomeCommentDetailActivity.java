@@ -70,7 +70,7 @@ public class HomeCommentDetailActivity extends AppCompatActivity {
         uploadComment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                models.add(new KeywordPostCommentModel("키루룩","ㄴㅇㅇ",comment.getText().toString()));
+                models.add(new KeywordPostCommentModel("하태영","2021-12-01",comment.getText().toString()));
                 adapter.notifyDataSetChanged();
                 comment.setText("");
             }
@@ -91,7 +91,7 @@ public class HomeCommentDetailActivity extends AppCompatActivity {
 
     public void getCommentData(){
         for (int i = 0; i<5;i++) {
-            KeywordPostCommentModel model = new KeywordPostCommentModel("ㄴㅇㄹ","ㄴㅇㅇ","ㄴㅁㅇㄹㄴㅇ");
+            KeywordPostCommentModel model = new KeywordPostCommentModel("하태영","2021-12-01","가을?가을?");
             models.add(model);
         }
 
